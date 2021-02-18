@@ -1,0 +1,27 @@
+function validateBrackets(brackets){
+  let trace = []
+   let open = {
+        '{': '}',
+        '[': ']',
+        '(': ')'
+    };
+
+    let closed = {
+        '}': true,
+        ']': true,
+        ')': true
+    }
+
+    for (let i = 0; i < brackets.length; i++) {
+
+        let char = brackets[i];
+
+        if (open[char]) {
+            trace.push(char);
+        } else if (closed[char]) {
+            if (open[trace.pop()] !== char) return false;
+        }
+    }
+    return trace.length === 0;
+  
+}
